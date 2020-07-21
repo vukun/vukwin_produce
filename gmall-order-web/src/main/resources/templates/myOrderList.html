@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>我的订单</title>
+  <link rel="stylesheet" href="myorder/css/index.css">
+  <style media="screen">
+    * {
+      font-family: "微软雅黑";
+    }
+  </style>
+</head>
+
+<body>
+  <div id="nav">
+    <nav>
+      <div class="logo">
+        <img src="myorder/img/logo_2017.png" alt="">
+      </div>
+      <div class="myOrder">
+        <a class="nav_ul" href="http://106.12.154.17:8083/gmall-search-web/index"  style="color: #f9f9f9">首页</a>
+      </div>
+      <ul class="nav_ul">
+      </ul>
+      <div class="right">
+        <span style="font-size: medium" th:text="'你好， ' + ${nickName}">布谷</span>
+      </div>
+      <div style="clear:both;"></div>
+    </nav>
+
+  </div>
+  <div style="clear:both;"></div>
+  <div id="big">
+    <div id="bigLeft">
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+      <ul>
+      </ul>
+    </div>
+    <div id="bigRight">
+      <div class="myOrder">
+        <p>我的订单</p>
+      </div>
+
+
+      <div class="allBig">
+        <div class="allOrder">
+          <ul class="allOrderTop">
+            <li>
+              <ol>
+                <li>全部订单</li>
+<!--                <li>待付款</li>-->
+<!--                <li>待收货</li>-->
+<!--                <li>待评价</li>-->
+                <div style="clear:both;"></div>
+              </ol>
+            </li>
+            <li class="allOrderTopLastLi">
+              <div>
+              </div>
+            </li>
+            <div class="clear:both;"></div>
+          </ul>
+
+        </div>
+        <div class="details">
+          <ul class="detailsUl">
+            <div class="detailsUlDiv">
+              <li class="detailsLi">序号</li>
+              <li class="detailsLiok detailsLi">
+<!--                <i class="allBig_i"></i>-->
+<!--                <ol>-->
+<!--                  <li>近三个月订单</li>-->
+<!--                  <li>今年内订单</li>-->
+<!--                  <li>今年内订单</li>-->
+<!--                  <li>2016年订单</li>-->
+<!--                  <li>2015年订单</li>-->
+<!--                  <li>2014年订单</li>-->
+<!--                  <li>2014年以前订单</li>-->
+<!--                </ol>-->
+              </li>
+              <li class="detailsLi">创建时间</li>
+              <div style="clear:both;"></div>
+            </div>
+
+            <li class="detailsLi1">收货人</li>
+            <li class="detailsLi1">金额</li>
+            <li class="detailsLi1">订单状态
+<!--              <i class="allBig_i"></i>-->
+<!--              <ol>-->
+<!--                <li>全部状态</li>-->
+<!--                <li>等待付款</li>-->
+<!--                <li>等待收货</li>-->
+<!--                <li>已完成</li>-->
+<!--                <li>已取消</li>-->
+<!--              </ol>-->
+            </li>
+            <li class="detailsLi1">备注</li>
+            <div style="clear:both;"></div>
+          </ul>
+        </div>
+        <table class="table" th:each="omsOrder:${omsOrders}">
+          <tr>
+            <td colspan="5" style="background:#F7F7F7" >
+              <span style="font-size: small" th:text="'订单号：'+${omsOrder.orderSn}">5</span>
+              <i class="table_i5 isShow"></i>
+            </td>
+          </tr>
+          <tr class="tr">
+            <td colspan="1">
+              <span style="font-size: small" th:text="${omsOrder.no}">5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: small" th:text="${omsOrder.createtime}">5</span>
+            </td>
+            <td>
+              <span style="font-size: small" th:text="${omsOrder.receiverName}">5</span>
+            </td>
+            <td >
+              <span style="font-size: small" th:text="${omsOrder.payAmount}+' 元'">5</span>
+            </td>
+            <td>
+              <ul>
+                <span id="status" style="font-size: small" th:text="${omsOrder.status}">5</span>
+                <li style="margin:4px 0;" class="hide"><i class="table_i2"></i>收件信息<i class="table_i3"></i>
+                    <div class="hi">
+                      <div class="p-tit">
+                        <span style="font-size: small" th:text="'手机号： ' + ${omsOrder.receiverPhone}">5</span>
+                      </div>
+                      <div class="hideList">
+                        <ul>
+                          <li>
+                            <span style="font-size: small" th:text="'收货地址： ' + ${omsOrder.receiverProvince}">5</span>&nbsp;<span style="font-size: small" th:text="${omsOrder.receiverCity}">5</span>&nbsp;<span style="font-size: small" th:text="${omsOrder.receiverRegion}">5</span>&nbsp;<span style="font-size: small" th:text="${omsOrder.receiverDetailAddress}">5</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                </li>
+              </ul>
+            </td>
+            <td>
+<!--              <ul>-->
+<!--                <li style="margin:4px 0;" class="hide"><i class="table_i2"></i>订单详情<i class="table_i3"></i>-->
+<!--                  <div class="hi">-->
+<!--                    <div class="p-tit">-->
+<!--                      <span style="font-size: small" th:text="'订单号： ' + ${omsOrder.orderSn}">5</span>-->
+<!--                    </div>-->
+<!--                    <div class="hideList" >-->
+<!--                      <ul th:each="omsOrderItem:${omsOrders.omsOrderItemes}">-->
+<!--                        <li>-->
+<!--                          <span style="font-size: small" th:text="'订单详情： ' + ${omsOrderItem.productPic}">5</span><span style="font-size: small" th:text="${omsOrderItem.productName}">5</span>&nbsp;<span style="font-size: small" th:text="${omsOrderItem.productPrice}">5</span>&nbsp;<span style="font-size: small" th:text="${omsOrderItem.productQuantity}">5</span>-->
+<!--                        </li>-->
+<!--                      </ul>-->
+<!--&lt;!&ndash;                      <span style="font-size: small" th:text="'订单详情： ' + ${omsOrders.omsOrderItems}">5</span>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </li>-->
+<!--              </ul>-->
+              <span style="font-size: small" th:text="${omsOrder.note}">5</span>
+            </td>
+          </tr>
+        </table>
+
+        <div class="order_btm">
+          <div>
+            <button>上一页</button>
+            <span>1</span>
+            <button>下一页</button>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+  </div>
+  </div>
+</body>
+<script src="myorder/js/jquery-3.1.1.min.js"></script>
+<script src="myorder/js/index.js"></script>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/success.css" />
+
+ </head>
+
+    <body>
+    <!--头部-->
+    <input name="nickName_hidden" th:value="${nickName}" type="hidden"/>
+    <div class="alert-info">
+        <div class="hd_wrap_top">
+        <ul class="hd_wrap_left">
+        <li class="hd_home"><i class="glyphicon glyphicon-home"></i>
+        <a href="http://106.12.154.17:8083/gmall-search-web/index">布谷首页</a>
+        </li>
+
+        </ul>
+
+        <ul class="hd_wrap_right">
+<!--            <li>-->
+<!--                <a class="link_login" href="http://localhost:8085/index?ReturnUrl=http://localhost:8084/addToCart" id="loginData" style="display: none">你好，请登录</a>-->
+
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="http://localhost:8080/index.html" class="link_regist" id="registerData" style="display: none">免费注册</a>-->
+<!--            </li>-->
+<!--            <li id="successLoginData" style="display: none"><span th:text="'你好，'+ ${nickName}" class="li_2"></span><span class="li_2">，退出</span></li>-->
+<!--            <span>|</span>-->
+            <li>
+                <a href="http://search.ikwin.net:8086/gmall-order-web/myOrder" style="font-size:13px;color: black">我的订单</a>
+            </li>
+        </ul>
+
+        </div>
+      </div>
+
+        <div class="nav-tabs-justified">
+        <div class="nav_wrap">
+
+        <div class="nav_top">
+        <div class="nav_top_one">
+        <a href="#"><img src="/img/logo1.jpg" style="height: 60px;width:180px;"  /></a>
+        </div>
+        <div class="nav_top_two"><input type="text" /><button>搜索</button></div>
+
+
+
+
+
+    </div>
+
+    </div>
+    </div>
+
+    <div class="main">
+
+        <div class="success-wrap">
+        <div class="w" id="result">
+        <div class="m succeed-box">
+        <div class="mc success-cont">
+        <div class="success-lcol">
+        <div class="success-top"><b class="succ-icon"></b>
+        <h3 class="ftx-02">商品已成功加入购物车</h3></div>
+    <div class="p-item">
+        <div class="p-img">
+        <a href="#" target="_blank"><img style="height: 60px;width:60px;"  th:src="${skuInfo?.skuDefaultImg}" src="/img/shop1.jpg"></a>
+        </div>
+        <div class="p-info">
+        <div class="p-name">
+        <a href="#"  th:text="${skuInfo?.skuName}"  >TCL 55A950C 55英寸32核人工智能 HDR曲面超薄4K电视金属机身（枪色）</a>
+    </div>
+    <div class="p-extra"> <span class="txt" th:text="'数量：'+${skuNum}" >  数量：1</span></div>
+    </div>
+    <div class="clr"></div>
+        </div>
+        </div>
+        <div class="success-btns success-btns-new">
+        <div class="success-ad">
+        <a href="#"></a>
+        </div>
+        <div class="clr"></div>
+        <div class="bg_shop">
+        <a class="btn-tobback" th:href="'http://search.ikwin.net:8082/gmall-item-web/'+${skuInfo?.id}+'.html'">查看商品详情</a>
+        <a class="btn-addtocart"  href="http://order.ikwin.net:8084/gmall-cart-web/cartList" id="GotoShoppingCart"><b></b>去购物车结算</a>
+   </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </body>
+    <script type="text/javascript" src="/js/success.js">
+    </script>
+<script type="text/javascript">
+    //根据页面nickName非不非空来决定显示的是“请登录” 还是 “登录后的用户名”
+    $(function () {
+        var loginStatus = $("input[name='nickName_hidden']").val();
+        if(loginStatus == null || loginStatus == ""){
+            document.getElementById("loginData").style = "block";
+            document.getElementById("registerData").style = "block";
+        }else{
+            document.getElementById("successLoginData").style = "block";
+        }
+    })
+</script>
+
+</html>

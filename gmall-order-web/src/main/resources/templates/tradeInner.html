@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/JD2.css" />
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/stylez.css">
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div class="top-3">
+    <ul >
+        <li class=".address default selected" th:each="userAddress:${userAddressList}"  >
+            <input   name="deliveryAddress" type="radio"  th:value="${userAddress.id}"   th:checked="(${userAddress.defaultStatus}==1)?'true':'false'" onclick="changeAddress()">
+            <span  th:text="${userAddress.name}" >收件人AAAA </span><span th:text="${userAddress.phoneNumber}"   >电话号码 </span><span th:text="${userAddress.province}+${userAddress.city}+${userAddress.region}+${userAddress.detailAddress}"   >具体地址111 </span>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
