@@ -4,12 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * @param
  * @return
  */
-public class WareOrderTaskDetail {
+public class WareOrderTaskDetail implements Serializable {
 
     @Column
     @Id

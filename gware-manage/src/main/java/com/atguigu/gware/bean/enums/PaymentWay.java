@@ -1,10 +1,12 @@
 package com.atguigu.gware.bean.enums;
 
+import java.io.Serializable;
+
 /**
  * @param
  * @return
  */
-public enum PaymentWay {
+public enum PaymentWay implements Serializable {
        ONLINE("在线支付"),
        OUTLINE("货到付款" );
 

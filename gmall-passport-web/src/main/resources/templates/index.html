@@ -10,7 +10,7 @@
 		<!--顶部logo-->
 
 		<header>
-			<a href="http://www.baidu.com"><img src="/img/logo1.jpg"/></a><p>欢迎登录</p>
+			<img src="/img/logo1.jpg"/></a><p>欢迎登录</p>
  
 		</header>
 		
@@ -51,7 +51,7 @@
 
 						</li>
 						<li class="bri">
-							<a href="https://api.weibo.com/oauth2/authorize?client_id=1478025309&response_type=code&redirect_uri=http://192.168.1.185:8085/vlogin">微博登录</a>
+							<a href="https://api.weibo.com/oauth2/authorize?client_id=1478025309&response_type=code&redirect_uri=http://order.ikwin.net:8085/gmall-passport-web/vlogin">微博登录</a>
 						</li>
 						<li class="ent"><button id="btn2" type="button" class="btn2"><a href="javascript:submitLogin();" class="a">登 &nbsp; &nbsp;录</a></button></li>
 
@@ -63,7 +63,7 @@
  
 				<h5 class="rig">
 						<img src="/img/4de5019d2404d347897dee637895d02b_25.png"/>
-						<span><a href="#">立即注册</a></span>
+						<span><a href="http://order.ikwin.net:8080/gmall-user-web/index">立即注册</a></span>
 					</h5>
 			</div>
 			</div>
@@ -74,11 +74,12 @@
 		 <input type="hidden" th:value="${ReturnUrl}" id="ReturnUrl" />
 		
 	</body>
+	<script src="js/md5.pro.js"></script>
 	<script language="JavaScript">
 		
 			function submitLogin() {
 				var username = $("#username").val();
-                var password = $("#password").val();
+				var password = hex_md5($("#password").val());
                 //异步ajax验证
                 $.post("login",{username:username,password:password},function(token){
 					// 验证token是否为空或者异常

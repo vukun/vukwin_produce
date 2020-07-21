@@ -45,7 +45,7 @@ public class PaymentController {
     @LoginRequired(loginSuccess = true)
     public String index(String outTradeNo, BigDecimal totalAmount, HttpServletRequest request, ModelMap modelMap){
         String memberId = (String) request.getAttribute("memberId");
-        String nickName = (String) request.getAttribute("nickname");
+        String nickName = (String) request.getAttribute("nickName");
         modelMap.put("totalAmount",totalAmount);
         modelMap.put("outTradeNo",outTradeNo);
         modelMap.put("nickName",nickName);
@@ -193,7 +193,7 @@ public class PaymentController {
         paymentInfo.setOrderId(omsOrder.getId());
         paymentInfo.setOrderSn(outTradeNo);
         paymentInfo.setPaymentStatus("未付款");
-        paymentInfo.setSubject("谷粒商城商品一件");
+        paymentInfo.setSubject("布谷商城商品一件");
         paymentInfo.setTotalAmount(totalAmount);
         paymentService.savePaymentInfo(paymentInfo);
 
@@ -201,7 +201,7 @@ public class PaymentController {
         //这么做是主动去定时查询支付的结果，避免长时间的等待支付宝操作结束后才给我们返回结果的延迟时间
 //        paymentService.sendDelayPaymentResultCheck(outTradeNo, 5);
 
-        ModelAndView mv = new ModelAndView("redirect:http://localhost:8087/alipay/callback/return");
+        ModelAndView mv = new ModelAndView("redirect:http://search.ikwin.net:8087/gmall-payment/alipay/callback/return");
         mv.addObject("outTradeNo",outTradeNo);
         mv.addObject("totalAmount",totalAmount);
         return mv;

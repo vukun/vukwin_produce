@@ -5,6 +5,7 @@ import org.apache.ibatis.type.JdbcType;
 import tk.mybatis.mapper.annotation.ColumnType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @param
  * @return
  */
-public class WareOrderTask {
+public class WareOrderTask implements Serializable {
 
     @Id
     @Column

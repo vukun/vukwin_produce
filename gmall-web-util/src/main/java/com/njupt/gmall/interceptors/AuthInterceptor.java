@@ -56,7 +56,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                     ip = "127.0.0.1";
                 }
             }
-            String successJson  = HttpclientUtil.doGet("http://localhost:8085/verify?token=" + token + "&currentIp=" + ip);//currentIp是原本请求的ip，此时需要把原始请求的ip传过去
+            String successJson  = HttpclientUtil.doGet("http://order.ikwin.net:8085/gmall-passport-web/verify?token=" + token + "&currentIp=" + ip);//currentIp是原本请求的ip，此时需要把原始请求的ip传过去
             successMap = JSON.parseObject(successJson, Map.class);
             success = successMap.get("status");
         }
@@ -67,13 +67,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             if (!success.equals("success")) {
                 //重定向会passport登录
                 StringBuffer requestURL = request.getRequestURL();
-                response.sendRedirect("http://localhost:8085/index?ReturnUrl="+requestURL);
+                response.sendRedirect("http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl="+requestURL);
                 return false;
             }
             // 验证通过
             // 需要将token携带的用户信息写入
             request.setAttribute("memberId", successMap.get("memberId"));
-            request.setAttribute("nickname", successMap.get("nickname"));
+            request.setAttribute("nickName", successMap.get("nickName"));
             //验证通过，并且需要覆盖cookie中的token，
             // 因为原始的cookie中的Token是有过期时间的，当刷新一次的时候会使得过期时间延长
             if(StringUtils.isNotBlank(token)){
@@ -84,7 +84,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             if (success.equals("success")) {
                 // 需要将token携带的用户信息写入
                 request.setAttribute("memberId", successMap.get("memberId"));
-                request.setAttribute("nickname", successMap.get("nickname"));
+                request.setAttribute("nickName", successMap.get("nickName"));
                 //验证通过，覆盖cookie中的token
                 if(StringUtils.isNotBlank(token)){
                     CookieUtil.setCookie(request,response,"oldToken",token,60*60*2,true);

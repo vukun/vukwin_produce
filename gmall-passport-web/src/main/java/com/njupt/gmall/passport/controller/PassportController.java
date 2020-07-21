@@ -54,9 +54,9 @@ public class PassportController {
             //登录成功，需要用jwt制作token
             Map<String, Object> userMap = new HashMap<>();
             String memberId = umsMemberLogin.getId();
-            String nickname = umsMemberLogin.getNickname();
+            String nickName = umsMemberLogin.getNickname();
             userMap.put("memberId",memberId);
-            userMap.put("nickname",nickname);
+            userMap.put("nickName",nickName);
             String ip = request.getHeader("x-forwarded-for");
             if(StringUtils.isBlank(ip)){
                 ip = request.getRemoteAddr();
@@ -90,7 +90,7 @@ public class PassportController {
         if(decode != null){
             map.put("status", "success");
             map.put("memberId", (String) decode.get("memberId"));
-            map.put("nickname", (String) decode.get("nickname"));
+            map.put("nickName", (String) decode.get("nickName"));
         }else{
             map.put("status", "fail");
         }
@@ -108,7 +108,7 @@ public class PassportController {
         paramMap.put("client_id","1478025309");
         paramMap.put("client_secret","e132eecc220d641a340575de6ab4ffe9");
         paramMap.put("grant_type","authorization_code");
-        paramMap.put("redirect_uri","http://192.168.1.185:8085/vlogin");
+        paramMap.put("redirect_uri","http://order.ikwin.net:8085/gmall-passport-web/vlogin");
         paramMap.put("code",code);// 授权有效期内可以使用，没新生成一次授权码，说明用户对第三方数据进行重启授权，之前的access_token和授权码全部过期
         String access_token_json = HttpclientUtil.doPost(s3, paramMap);
 
@@ -145,10 +145,10 @@ public class PassportController {
         //生成jwt的token，并且重定向到首页，携带token
         String token = null;
         String memberId = umsMember.getId();//rpc的主键返回策略失效，因为无法跨越两层，他只能在dao层有用
-        String nickname = umsMember.getNickname();
+        String nickName = umsMember.getNickname();
         Map<String,Object> userMap = new HashMap<>();
         userMap.put("memberId",memberId);//是保存数据库后主键返回策略生成的id
-        userMap.put("nickname",nickname);
+        userMap.put("nickName",nickName);
 
         String ip = request.getHeader("x-forwarded-for");// 通过nginx转发的客户端ip
         if(StringUtils.isBlank(ip)){
@@ -161,6 +161,6 @@ public class PassportController {
         token = JwtUtil.encode("2020gmall0511", userMap, ip);
         // 将token存入redis一份
         userService.addUserToken(token,memberId);
-        return "redirect:http://localhost:8083/index?token=" + token;
+        return "redirect:http://106.12.154.17:8083/index?token=" + token;
     }
 }

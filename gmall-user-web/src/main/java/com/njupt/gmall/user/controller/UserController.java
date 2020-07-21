@@ -6,7 +6,6 @@ import com.njupt.gmall.bean.UmsMemberReceiveAddress;
 import com.njupt.gmall.service.UmsMemberReceiveAddressService;
 import com.njupt.gmall.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,29 +42,16 @@ public class UserController {
         return phoneResult;
     }
 
-
-    @RequestMapping("register")
-    public ModelAndView register( HttpServletRequest request, ModelMap modelMap){
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
-        UmsMember umsMember = new UmsMember();
-        umsMember.setUsername(username);
-        umsMember.setPassword(password);
-        umsMember.setPhone(phone);
-        userService.register(umsMember);
-        ModelAndView mv = new ModelAndView("redirect:http://localhost:8085/index?ReturnUrl=http://localhost:8083/index");
-        return mv;
-    }
-
     @RequestMapping("index")
-    public ModelAndView index(HttpServletRequest request){
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
+    public ModelAndView index(String username, String password, String phone){
         ModelAndView mv = null;
         if(username != null){
-            String url = "redirect:http://localhost:8080/register?username=" + username + "&password=" + password + "&phone=" + phone;
+            UmsMember umsMember = new UmsMember();
+            umsMember.setUsername(username);
+            umsMember.setPassword(password);
+            umsMember.setPhone(phone);
+            userService.register(umsMember);
+            String url = "redirect:http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl=http://106.12.154.17:8083/gmall-search-web/index";
             mv = new ModelAndView(url);
         }else{
             mv = new ModelAndView("index");

@@ -1,10 +1,12 @@
 package com.atguigu.gware.bean.enums;
 
+import java.io.Serializable;
+
 /**
  * @param
  * @return
  */
-public enum ProcessStatus {
+public enum ProcessStatus implements Serializable {
       UNPAID("未支付",OrderStatus.UNPAID),
       PAID("已支付",OrderStatus.PAID),
       NOTIFIED_WARE("已通知仓储",OrderStatus.PAID),

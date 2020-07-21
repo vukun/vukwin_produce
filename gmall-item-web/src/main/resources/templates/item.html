@@ -12,54 +12,65 @@
 	<body>
 		<div id="max">
 		<header>
+			<input name="nickName_hidden" th:value="${nickName}" type="hidden"/>
+			<input name="skuId_hidden" th:value="${skuId}" type="hidden"/>
 		<input type = "text" th:value="${skuSaleAttrHashJsonStr}" id="valuesSku" style="display: none"/>
 					<div class="min">
 						<ul class="header_ul_left">
-							<li class="glyphicon glyphicon-home"> <a href="shouye.html" class="aa">首页</a></li>
-							<li class="glyphicon glyphicon-map-marker"> <a href="javascript:;">北京</a>
+							<li class="glyphicon glyphicon-home"> <a href="http://106.12.154.17:8083/gmall-search-web/index" class="aa">首页</a></li>
+							<li class="glyphicon glyphicon-map-marker"> <a href="#">北京</a>
 								<ol id="beijing">
-									<li style="background: red;"><a href="javascript:;" style="color: white;">北京</a></li>
-									<li><a href="javascript:;">上海</a></li>
-									<li><a href="javascript:;">天津</a></li>
-									<li><a href="javascript:;">重庆</a></li>
-									<li><a href="javascript:;">河北</a></li>
-									<li><a href="javascript:;">山西</a></li>
-									<li><a href="javascript:;">河南</a></li>
-									<li><a href="javascript:;">辽宁</a></li>
-									<li><a href="javascript:;">吉林</a></li>
-									<li><a href="javascript:;">黑龙江</a></li>
-									<li><a href="javascript:;">内蒙古</a></li>
-									<li><a href="javascript:;">江苏</a></li>
-									<li><a href="javascript:;">山东</a></li>
-									<li><a href="javascript:;">安徽</a></li>
-									<li><a href="javascript:;">浙江</a></li>
-									<li><a href="javascript:;">福建</a></li>
-									<li><a href="javascript:;">湖北</a></li>
-									<li><a href="javascript:;">湖南</a></li>
-									<li><a href="javascript:;">广东</a></li>
-									<li><a href="javascript:;">广西</a></li>
-									<li><a href="javascript:;">江西</a></li>
-									<li><a href="javascript:;">四川</a></li>
-									<li><a href="javascript:;">海南</a></li>
-									<li><a href="javascript:;">贵州</a></li>
-									<li><a href="javascript:;">云南</a></li>
-									<li><a href="javascript:;">西藏</a></li>
-									<li><a href="javascript:;">陕西</a></li>
-									<li><a href="javascript:;">甘肃</a></li>
-									<li><a href="javascript:;">青海</a></li>
-									<li><a href="javascript:;">宁夏</a></li>
-									<li><a href="javascript:;">新疆</a></li>
-									<li><a href="javascript:;">港澳</a></li>
-									<li><a href="javascript:;">台湾</a></li>
-									<li><a href="javascript:;">钓鱼岛</a></li>
-									<li><a href="javascript:;">海外</a></li>
+									<li style="background: red;"><a href="#" style="color: white;">北京</a></li>
+									<li><a href="#">上海</a></li>
+									<li><a href="#">天津</a></li>
+									<li><a href="#">重庆</a></li>
+									<li><a href="#">河北</a></li>
+									<li><a href="#">山西</a></li>
+									<li><a href="#">河南</a></li>
+									<li><a href="#">辽宁</a></li>
+									<li><a href="#">吉林</a></li>
+									<li><a href="#">黑龙江</a></li>
+									<li><a href="#">内蒙古</a></li>
+									<li><a href="#">江苏</a></li>
+									<li><a href="#">山东</a></li>
+									<li><a href="#">安徽</a></li>
+									<li><a href="#">浙江</a></li>
+									<li><a href="#">福建</a></li>
+									<li><a href="#">湖北</a></li>
+									<li><a href="#">湖南</a></li>
+									<li><a href="#">广东</a></li>
+									<li><a href="#">广西</a></li>
+									<li><a href="#">江西</a></li>
+									<li><a href="#">四川</a></li>
+									<li><a href="#">海南</a></li>
+									<li><a href="#">贵州</a></li>
+									<li><a href="#">云南</a></li>
+									<li><a href="#">西藏</a></li>
+									<li><a href="#">陕西</a></li>
+									<li><a href="#">甘肃</a></li>
+									<li><a href="#">青海</a></li>
+									<li><a href="#">宁夏</a></li>
+									<li><a href="#">新疆</a></li>
+									<li><a href="#">港澳</a></li>
+									<li><a href="#">台湾</a></li>
+									<li><a href="#">钓鱼岛</a></li>
+									<li><a href="#">海外</a></li>
 								</ol>
 							</li>
 						</ul>
 						<ul class="header_ul_right">
-							<li style="border: 0;"><a href="../登录页面\index.html" class="aa">你好，请登录</a></li>
-							<li><a href="../注册页面\index.html" style="color: red;">免费注册</a> |</li>
-							<li><a href="javascript:;" class="aa">我的订单</a> |</li>
+							<li>
+								<a href="#"  class="aa" th:onclick="'javascript:item(\''+${skuId}+'\')'" id="loginData" style="display: none">你好，请登录</a>
+
+							</li>
+							<li>
+								<a href="http://order.ikwin.net:8080/gmall-user-web/index.html"  class="aa" id="registerData" style="display: none">免费注册</a>
+							</li>
+							<li id="successLoginData" style="display: none"><span th:text="'你好，'+ ${nickName}" class="aa"></span>
+<!--							<span>|</span>-->
+							<li>
+							<a href="http://search.ikwin.net:8086/gmall-order-web/myOrder" style="font-size:13px;color: black">我的订单</a>
+							</li>
  
 						</ul>
 					</div>
@@ -69,15 +80,15 @@
 					<div class="nav_top">
 						<div class="nav_top_one"><a href="#"><img src="/img/logo1.jpg"/></a></div>
 						<div class="nav_top_two"><input type="text"/><button>搜索</button></div>
-						<div class="nav_top_three"><a href="../JD_Shop/One_JDshop.html">我的购物车</a><span class="glyphicon glyphicon-shopping-cart"></span>
-							<div class="nav_top_three_1">
-								<img src="/img/44.png"/>购物车还没有商品，赶紧选购吧！
-							</div>
-						</div>
+<!--						<div class="nav_top_three"><a href="../JD_Shop/One_JDshop.html">我的购物车</a><span class="glyphicon glyphicon-shopping-cart"></span>-->
+<!--							<div class="nav_top_three_1">-->
+<!--								<img src="/img/44.png"/>购物车还没有商品，赶紧选购吧！-->
+<!--							</div>-->
+<!--						</div>-->
 					</div>
 					<div class="nav_down">
 						<ul class="nav_down_ul">
-							<li class="nav_down_ul_1" style="width: 24%;float: left;"><a href="javascript:;">全部商品分类</a>
+							<li class="nav_down_ul_1" style="width: 24%;float: left;"><a href="#">全部商品分类</a>
 
 							</li>
 							 
@@ -180,7 +191,7 @@
 								 
 								</li>
 								<li>
-									<a href="">
+									<a href="#">
 										 
 									</a>
 								</li>
@@ -261,7 +272,7 @@
 
 						<div class="box-btns clear">
 							<div class="box-btns-one">
-								<form id="itemForm" action="http://localhost:8084/addToCart" method="post">
+								<form id="itemForm" action="http://order.ikwin.net:8084/gmall-cart-web/addToCart" method="post">
 									<input type="text" name="quantity" id=""  value="1"/>
 									<input type="hidden" name="skuId"  th:value="${skuInfo?.id}" />
 
@@ -304,30 +315,30 @@
 					<div class="dangeshopxingqing">
 						<ul class="shopdange">
 							<li>
-								<a href="##"><img src="/img/5a0afeddNb34732af.jpg" /></a>
+								<a href="#"><img src="/img/5a0afeddNb34732af.jpg" /></a>
 								<p>
-									<a href="##">OPPO R11s Plus 双卡双待全面屏拍照手机香槟色 全网通(6G RAM+64G ROM)标配</a>
+									<a href="#">OPPO R11s Plus 双卡双待全面屏拍照手机香槟色 全网通(6G RAM+64G ROM)标配</a>
 								</p>
 								<p><strong class="J-p-20015341974">￥3699.00</strong></p>
 							</li>
 							<li>
-								<a href="##"><img src="/img/5a12873eN41754123.jpg" /></a>
+								<a href="#"><img src="/img/5a12873eN41754123.jpg" /></a>
 								<p>
-									<a target="_blank" title="詹姆士（GEMRY） R19plus全网通4G 智能手机 双卡双待 6+128GB 鳄鱼纹雅致版（新品预约）" href="/item.html.bak/item.jd.com/20348283521.html">詹姆士（GEMRY） R19plus全网通4G 智能手机 双卡双待 6+128GB 鳄鱼纹雅致版（新品预约）</a>
+									<a target="_blank" title="詹姆士（GEMRY） R19plus全网通4G 智能手机 双卡双待 6+128GB 鳄鱼纹雅致版（新品预约）" href="#">詹姆士（GEMRY） R19plus全网通4G 智能手机 双卡双待 6+128GB 鳄鱼纹雅致版（新品预约）</a>
 								</p>
 								<p><strong class="J-p-20348283521">￥13999.00</strong></p>
 							</li>
 							<li>
-								<a href="##"><img src="/img/59ec0131Nf239df75.jpg" /></a>
+								<a href="#"><img src="/img/59ec0131Nf239df75.jpg" /></a>
 								<p>
-									<a target="_blank" title="斐纳（TOMEFON） 德国家用无线无绳手持立式充电吸尘器 静音大吸力吸尘器TF-X60" href="/item.html.bak/item.jd.com/16683419775.html">斐纳（TOMEFON） 德国家用无线无绳手持立式充电吸尘器 静音大吸力吸尘器TF-X60</a>
+									<a target="_blank" title="斐纳（TOMEFON） 德国家用无线无绳手持立式充电吸尘器 静音大吸力吸尘器TF-X60" href="#">斐纳（TOMEFON） 德国家用无线无绳手持立式充电吸尘器 静音大吸力吸尘器TF-X60</a>
 								</p>
 								<p><strong class="J-p-16683419775">￥1599.00</strong></p>
 							</li>
 							<li>
-								<a href="##"><img src="/img/59015444N27317512.jpg" /></a>
+								<a href="#"><img src="/img/59015444N27317512.jpg" /></a>
 								<p>
-									<a target="_blank" title="斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金" href="/item.html.bak/item.jd.com/12187770381.html">斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金</a>
+									<a target="_blank" title="斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金" href="#">斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金</a>
 								</p>
 								<p><strong class="J-p-12187770381">￥2599.00</strong></p>
 							</li>
@@ -340,30 +351,30 @@
 					<div class="dangeshopxingqing">
 						<ul class="shopdange">
 							<li>
-								<a href="##"><img src="/img/59e55e01N369f98f2.jpg" /></a>
+								<a href="#"><img src="/img/59e55e01N369f98f2.jpg" /></a>
 								<p>
-									<a target="_blank" title="华为（HUAWEI） 华为 Mate10 4G手机  双卡双待 亮黑色 全网通(6GB RAM+128GB ROM)" href="/item.html.bak/item.jd.com/17931625443.html">华为（HUAWEI） 华为 Mate10 4G手机 双卡双待 亮黑色 全网通(6GB RAM+128GB ROM)</a>
+									<a target="_blank" title="华为（HUAWEI） 华为 Mate10 4G手机  双卡双待 亮黑色 全网通(6GB RAM+128GB ROM)" href="#">华为（HUAWEI） 华为 Mate10 4G手机 双卡双待 亮黑色 全网通(6GB RAM+128GB ROM)</a>
 									<p><strong class="J-p-17931625443">￥4766.00</strong></p>
 							</li>
 							<li>
-								<a href="##"><img src="/img/584fcc3eNdb0ab94c.jpg" /></a>
+								<a href="#"><img src="/img/584fcc3eNdb0ab94c.jpg" /></a>
 								<p>
-									<a target="_blank" title="华为 Mate 9 Pro 6GB+128GB版 琥珀金 移动联通电信4G手机 双卡双待" href="/item.html.bak/item.jd.com/3749093.html">华为 Mate 9 Pro 6GB+128GB版 琥珀金 移动联通电信4G手机 双卡双待</a>
+									<a target="_blank" title="华为 Mate 9 Pro 6GB+128GB版 琥珀金 移动联通电信4G手机 双卡双待" href="#">华为 Mate 9 Pro 6GB+128GB版 琥珀金 移动联通电信4G手机 双卡双待</a>
 								</p>
 								<p><strong class="J-p-3749093">￥4899.00</strong></p>
 							</li>
 							<li>
 								<!--shopjieshao-->
-								<a href="##"><img src="/img/59eb0df9Nd66d7585.jpg" /></a>
+								<a href="#"><img src="/img/59eb0df9Nd66d7585.jpg" /></a>
 								<p>
-									<a target="_blank" title="华为（HUAWEI） 华为 Mate10 手机 亮黑色 全网通(4+64G)标准版" href="/item.html.bak/item.jd.com/12306211773.html">华为（HUAWEI） 华为 Mate10 手机 亮黑色 全网通(4+64G)标准版</a>
+									<a target="_blank" title="华为（HUAWEI） 华为 Mate10 手机 亮黑色 全网通(4+64G)标准版" href="#">华为（HUAWEI） 华为 Mate10 手机 亮黑色 全网通(4+64G)标准版</a>
 								</p>
 								<p><strong class="J-p-12306211773">￥4088.00</strong></p>
 							</li>
 							<li>
-								<a href="##"><img src="/img/5a002ba3N126c2f73.jpg" /></a>
+								<a href="#"><img src="/img/5a002ba3N126c2f73.jpg" /></a>
 								<p>
-									<a target="_blank" title="斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金" href="/item.html.bak/item.jd.com/12187770381.html">斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金</a>
+									<a target="_blank" title="斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金" href="#">斐纳（TOMEFON） 扫地机器人德国智能导航规划全自动超薄扫地机器人吸尘器TF-D60 香槟金</a>
 								</p>
 								<p><strong class="J-p-12187770381">￥2599.00</strong></p>
 							</li>
@@ -375,38 +386,38 @@
 				<div class="allquanbushop">
 					<ul class="shopjieshao">
 						<li class="jieshoa" style="background: #e4393c;">
-							<a href="##" style="color: white;">商品介绍</a>
+							<a href="#" style="color: white;">商品介绍</a>
 						</li>
 						<li class="baozhuang">
-							<a href="##">规格与包装</a>
+							<a href="#">规格与包装</a>
 						</li>
 						<li class="baozhang">
-							<a href="##">售后保障</a>
+							<a href="#">售后保障</a>
 						</li>
 						<li class="pingjia">
-							<a href="##">商品评价(4万+)</a>
+							<a href="#">商品评价(4万+)</a>
 						</li>
 						<li class="shuoming">
-							<a href="##">预约说明</a>
+							<a href="#">预约说明</a>
 						</li>
 
 					</ul>
  
 					<ul class="shopjieshaos posi" style="display: none;">
 						<li class="jieshoa" style="background: #e4393c;">
-							<a href="#li1" style="color: white;">商品介绍</a>
+							<a href="#" style="color: white;">商品介绍</a>
 						</li>
 						<li class="baozhuang">
-							<a href="#li2">规格与包装</a>
+							<a href="#">规格与包装</a>
 						</li>
 						<li class="baozhang">
-							<a href="#li3">售后保障</a>
+							<a href="#">售后保障</a>
 						</li>
 						<li class="pingjia">
-							<a href="#li4">商品评价(4万+)</a>
+							<a href="#">商品评价(4万+)</a>
 						</li>
 						<li class="shuoming">
-							<a href="#li5">预约说明</a>
+							<a href="#">预约说明</a>
 						</li>
 					</ul>
 
@@ -421,35 +432,35 @@
 									<table>
 										<tr>
 											<td>
-												<a href="##">商品名称：华为Mate 10</a>
+												<a href="#">商品名称：华为Mate 10</a>
 											</td>
 											<td>
-												<a href="##">商品毛重：0.58kg</a>
+												<a href="#">商品毛重：0.58kg</a>
 											</td>
 											<td>
-												<a href="##">商品编号：5544038</a>
+												<a href="#">商品编号：5544038</a>
 											</td>
 											<td>
-												<a href="##">商品产地：中国大陆</a>
+												<a href="#">商品产地：中国大陆</a>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<a href="##">系统：安卓（Android）</a>
+												<a href="#">系统：安卓（Android）</a>
 											</td>
 											<td>
-												<a href="##">前置摄像头像素：800万-1599万</a>
+												<a href="#">前置摄像头像素：800万-1599万</a>
 											</td>
 											<td>
-												<a href="##">后置摄像头像素：2000万及以上，1200万-1999万</a>
+												<a href="#">后置摄像头像素：2000万及以上，1200万-1999万</a>
 											</td>
 											<td>
-												<a href="##">机身内存：128GB</a>
+												<a href="#">机身内存：128GB</a>
 											</td>
 										</tr>
 										<tr>
 											<td colspan="4">
-												<a href="##">全面屏，双卡双待，指纹识别，Type-C，VoLTE，2K屏，拍照神器，支持NFC，商务手机，安全手机，分辨率10</a>
+												<a href="#">全面屏，双卡双待，指纹识别，Type-C，VoLTE，2K屏，拍照神器，支持NFC，商务手机，安全手机，分辨率10</a>
 											</td>
 										</tr>
 									</table>
@@ -999,7 +1010,7 @@
 
 		<div class="Fixedbian">
 			<ul>
-				<li class="li1"><a class="aaa" href="##">顶部</a></li>
+				<li class="li1"><a class="aaa" href="#">顶部</a></li>
 			</ul>
 		</div>
 		<div class="gouwuchexiaguo">
@@ -1031,12 +1042,32 @@
 			});
 
             var kuSaleAttrValueJson = JSON.parse(skuSaleAttrValueJsonStr);
+            // alert(kuSaleAttrValueJson);
             var v_skuId = kuSaleAttrValueJson[k];
+            // alert(v_skuId);
 			if(v_skuId){
-                window.location.href = "http://localhost:8083/"+v_skuId+".html";
+				// alert(v_skuId);
+                window.location.hr9ef = "http://search.ikwin.net:8082/gmall-item-web/"+v_skuId+".html";
 			}
 
         }
+
+		//根据页面nickName非不非空来决定显示的是“请登录” 还是 “登录后的用户名”
+		$(function () {
+			var loginStatus = $("input[name='nickName_hidden']").val();
+			if(loginStatus == null || loginStatus == ""){
+				document.getElementById("loginData").style = "block";
+				document.getElementById("registerData").style = "block";
+			}else{
+				document.getElementById("successLoginData").style = "block";
+			}
+		})
+
+		function item(skuid) {
+			// console.log("skuid:"+skuid);
+			var skuId = $("input[name='skuId_hidden']").val();
+			window.location.href="http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl=http://search.ikwin.net:8082/gmall-item-web/"+skuId+".html";
+		}
 	</script>
 
 </html>

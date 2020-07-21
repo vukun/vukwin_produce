@@ -59,6 +59,4 @@ public class CatalogController {
         List<PmsBaseCatalog3> pmsBaseCatalog3s = pmsCatalogService.getCatalog3ByCatalog2Id(catalog2Id);
         return pmsBaseCatalog3s;
     }
-
-
 }
