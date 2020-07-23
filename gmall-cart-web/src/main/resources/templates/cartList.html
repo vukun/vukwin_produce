@@ -19,7 +19,7 @@
             <ul class="header-left">
                 <li>
 
-                    <a class="glyphicon glyphicon-home" href="http://106.12.154.17:8083/gmall-search-web/index" style="display: none">首页</a>
+                    <a class="glyphicon glyphicon-home" href="http://index.ikwin.net:8083/gmall-search-web/index" style="display: none">首页</a>
                 </li>
 
             </ul>
@@ -31,7 +31,8 @@
                 <li>
                     <a href="http://order.ikwin.net:8080/gmall-user-web/index.html" class="li_2" id="registerData" style="display: none">免费注册</a>
                 </li>
-                <li id="successLoginData" style="display: none"><span th:text="'你好，'+ ${nickName}" class="li_2"></span><span class="li_2">，退出</span></li>
+                <li id="successLoginData" style="display: none"><span th:text="'你好, '+ ${nickName}" class="li_2"></span></li>
+                <li id="successLoginData1" style="display: none"><span id="exit" class="li_2" onclick="exit()">退出</span></li>
 <!--                <span>|</span>-->
                 <li>
                     <a href="http://search.ikwin.net:8086/gmall-order-web/myOrder" style="font-size:13px;color: black">我的订单</a>
@@ -174,6 +175,10 @@
 <script src="/js/index.js" charset="utf-8"></script>
 <script type="text/javascript">
 
+    function exit() {
+        window.location.href="http://index.ikwin.net:8083/gmall-search-web/exit";
+    }
+
     //根据页面nickName非不非空来决定显示的是“请登录” 还是 “登录后的用户名”
     $(function () {
         var loginStatus = $("input[name='nickName_hidden']").val();
@@ -182,6 +187,7 @@
             document.getElementById("registerData").style = "block";
         }else{
             document.getElementById("successLoginData").style = "block";
+            document.getElementById("successLoginData1").style = "block";
         }
     })
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njupt.gmall.order.mapper.OmsOrderMapper">
+
+    <select id="getMyOrderListByMemberId" resultType="com.njupt.gmall.bean.OmsOrder">
+        SELECT
+	        (@i:= @i+1) as 'no',
+	        oo.*
+        FROM
+	        oms_order oo,
+	        (SELECT @i:=0) as i
+	    where member_id=#{memberId}
+	    order by create_time desc;
+    </select>
+
+</mapper>

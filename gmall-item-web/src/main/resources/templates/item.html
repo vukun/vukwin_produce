@@ -17,7 +17,7 @@
 		<input type = "text" th:value="${skuSaleAttrHashJsonStr}" id="valuesSku" style="display: none"/>
 					<div class="min">
 						<ul class="header_ul_left">
-							<li class="glyphicon glyphicon-home"> <a href="http://106.12.154.17:8083/gmall-search-web/index" class="aa">首页</a></li>
+							<li class="glyphicon glyphicon-home"> <a href="http://index.ikwin.net:8083/gmall-search-web/index" class="aa">首页</a></li>
 							<li class="glyphicon glyphicon-map-marker"> <a href="#">北京</a>
 								<ol id="beijing">
 									<li style="background: red;"><a href="#" style="color: white;">北京</a></li>
@@ -66,7 +66,8 @@
 							<li>
 								<a href="http://order.ikwin.net:8080/gmall-user-web/index.html"  class="aa" id="registerData" style="display: none">免费注册</a>
 							</li>
-							<li id="successLoginData" style="display: none"><span th:text="'你好，'+ ${nickName}" class="aa"></span>
+							<li id="successLoginData" style="display: none"><span th:text="'你好, '+ ${nickName}" class="li_2"></span></li>
+							<li id="successLoginData1" style="display: none"><span id="exit" class="li_2" onclick="exit()">退出</span></li>
 <!--							<span>|</span>-->
 							<li>
 							<a href="http://search.ikwin.net:8086/gmall-order-web/myOrder" style="font-size:13px;color: black">我的订单</a>
@@ -1023,6 +1024,11 @@
 	<script src="/js/spuId_66.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/js/js.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+
+		function exit() {
+			window.location.href="http://index.ikwin.net:8083/gmall-search-web/exit";
+		}
+
         function addToCart(obj){
             var canClick = $(obj).attr("canClick");
             if(canClick=='0'){
@@ -1060,6 +1066,7 @@
 				document.getElementById("registerData").style = "block";
 			}else{
 				document.getElementById("successLoginData").style = "block";
+				document.getElementById("successLoginData1").style = "block";
 			}
 		})
 

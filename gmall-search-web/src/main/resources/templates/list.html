@@ -17,7 +17,7 @@
     <div class="header_head_box">
         <b class="header_head_p">
             <div style="overflow: hidden">
-                <a href="http://106.12.154.17:8083/gmall-search-web/index" class="header_head_p_a1">
+                <a href="http://index.ikwin.net:8083/gmall-search-web/index" class="header_head_p_a1">
                     首页
                 </a>
             </div>
@@ -25,13 +25,14 @@
         </b>
         <ul>
             <li>
-                <a href="http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl=http://106.12.154.17:8083/gmall-search-web/list" id="loginData" style="display: none">你好，请登录</a>
+                <a href="http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl=http://index.ikwin.net:8083/gmall-search-web/list" id="loginData" style="display: none">你好，请登录</a>
 
             </li>
             <li>
                 <a href="http://order.ikwin.net:8080/gmall-user-web/index.html" class="li_2" id="registerData" style="display: none">免费注册</a>
             </li>
-            <li id="successLoginData" style="display: none"><span th:text="'你好，'+ ${nickName}" class="li_2"></span><span class="li_2">，退出</span></li>
+            <li id="successLoginData" style="display: none"><span th:text="'你好, '+ ${nickName}" class="li_2"></span></li>
+            <li id="successLoginData1" style="display: none"><span id="exit" class="li_2" onclick="exit()">退出</span></li>
             <span>|</span>
             <li>
                 <a href="http://search.ikwin.net:8086/gmall-order-web/myOrder" style="font-size:13px;color: black">我的订单</a>
@@ -409,6 +410,11 @@
 
 <script src="/list/js/index.js"></script>
 <script language="JavaScript">
+
+    function exit() {
+        window.location.href="http://index.ikwin.net:8083/gmall-search-web/exit";
+    }
+
     function item(skuid) {
         console.log("skuid:"+skuid);
         window.location.href="http://search.ikwin.net:8082/gmall-item-web/"+skuid+".html";
@@ -426,6 +432,7 @@
             document.getElementById("registerData").style = "block";
         }else{
             document.getElementById("successLoginData").style = "block";
+            document.getElementById("successLoginData1").style = "block";
         }
     })
 

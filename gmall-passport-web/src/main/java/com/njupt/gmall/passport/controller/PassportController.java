@@ -161,6 +161,6 @@ public class PassportController {
         token = JwtUtil.encode("2020gmall0511", userMap, ip);
         // 将token存入redis一份
         userService.addUserToken(token,memberId);
-        return "redirect:http://106.12.154.17:8083/index?token=" + token;
+        return "redirect:http://index.ikwin.net:8083/index?token=" + token;
     }
 }

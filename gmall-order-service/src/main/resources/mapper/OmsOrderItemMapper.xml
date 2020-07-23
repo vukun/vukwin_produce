@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njupt.gmall.order.mapper.OmsOrderItemMapper">
+
+    <select id="getMyOrderItemListByOrderSn" resultType="com.njupt.gmall.bean.OmsOrderItem">
+        SELECT
+	        (@i:= @i+1) as 'key',
+	        ooi.*
+        FROM
+	        oms_order_item ooi,
+	        (SELECT @i:=0) as i
+	    where order_sn=#{orderSn};
+    </select>
+
+</mapper>

@@ -51,7 +51,7 @@ public class UserController {
             umsMember.setPassword(password);
             umsMember.setPhone(phone);
             userService.register(umsMember);
-            String url = "redirect:http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl=http://106.12.154.17:8083/gmall-search-web/index";
+            String url = "redirect:http://order.ikwin.net:8085/gmall-passport-web/index?ReturnUrl=http://index.ikwin.net:8083/gmall-search-web/index";
             mv = new ModelAndView(url);
         }else{
             mv = new ModelAndView("index");
