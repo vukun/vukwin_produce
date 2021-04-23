@@ -52,7 +52,7 @@ public class SearchServiceImpl implements SearchService {
 //        System.err.println(dslStr);
         // 用api执行复杂查询
         List<PmsSearchSkuInfo> pmsSearchSkuInfos = new ArrayList<>();
-        Search search = new Search.Builder(dslStr).addIndex("gmall0511").addType("PmsSkuInfo").build();
+        Search search = new Search.Builder(dslStr).addIndex("gmall0105").addType("PmsSkuInfo").build();
         SearchResult execute = null;
         try {
             execute = jestClient.execute(search);
